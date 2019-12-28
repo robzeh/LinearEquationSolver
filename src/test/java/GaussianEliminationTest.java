@@ -23,4 +23,16 @@ class GaussianEliminationTest {
         assertEquals("2.0 3.0 2.0 -3.0 \n1.0 1.0 1.0 0.0 \n-1.0 2.0 -3.0 -1.0 \n", solver.printMatrix(), "Printout of matrix");
 
     }
+
+    /*
+     * Multiply row by scalar to make first entry 1
+     */
+    @Test
+    void multiplyByScalar() {
+        GaussianElimination solver = new GaussianElimination(simpleMatrix);
+
+        solver.multiply(2);
+
+        assertEquals("1.0 1.5 1.0 -1.5 \n1.0 1.0 1.0 0.0 \n-1.0 2.0 -3.0 -1.0 \n", solver.printMatrix(), "Printout of matrix");
+    }
 }
