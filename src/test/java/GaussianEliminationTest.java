@@ -45,8 +45,12 @@ class GaussianEliminationTest {
     void findSols() {
         GaussianElimination solver = new GaussianElimination(simpleMatrix);
 
-        solver.solve();
+        double[] x = solver.solve();
+        String out = "";
+        for (double d : x) {
+            out = out + d + " ";
+        }
 
-        assertEquals("7 -3 -4", solver.printMatrix(), "Vector b that contains unique solutions");
+        assertEquals("7.0 -3.0 -4.0 ", out, "Vector b that contains unique solutions");
     }
 }

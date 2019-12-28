@@ -46,6 +46,73 @@ public class GaussianElimination {
         }
     }
 
+    /*
+     * Splits augmented matrix form Ab = 0 where b is vector
+     * Solve method. Finds pivot entries and swaps.
+     * Then performs back substitution to find unique solutions
+     * @return b - vector b that contains unique solutions
+     */
+    public double[] solve() {
+
+        // Split augmented matrix into form Ab = 0
+        double[][] a = new double[A.length][A.length];
+
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < A.length; j++) {
+                a[i][j] = A[i][j];
+            }
+        }
+
+        double[] b = new double[A.length];
+
+        for (int k = 0; k < A.length; k++) {
+            b[k] = A[k][A.length];
+        }
+
+        int n = b.length;
+
+        for (int p = 0; p < n; p++) {
+
+            // find pivot row and swap
+            int max = p;
+            for (int l = p + 1; l < n; l++) {
+                if (Math.abs(a[l][p]) > Math.abs(a[max][p])) {
+                    max = l;
+                }
+            }
+
+            double[] temp = a[p];
+            a[p] = a[max];
+            a[max] = temp;
+
+            double t = b[p];
+            b[p] = b[max];
+            b[max] = t;
+
+            // pivot
+            for (int i = p + 1; i < n; i++) {
+                double alpha = a[i][p] / a[p][p];
+                b[i] -= alpha * b[p];
+                for (int j = p; j < n; j++) {
+                    a[i][j] -= alpha * a[p][j];
+                }
+            }
+        }
+
+        // back substitute
+        double[] x = new double[n];
+        for (int i = n - 1; i >= 0; i--) {
+            double sum = 0.0;
+            for (int j = i + 1; j < n; j++) {
+                sum += a[i][j] * x[j];
+            }
+            x[i] = (b[i] - sum) / a[i][i];
+        }
+
+        return x;
+
+    }
+
 
 
 
