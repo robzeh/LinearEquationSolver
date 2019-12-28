@@ -32,7 +32,21 @@ class GaussianEliminationTest {
         GaussianElimination solver = new GaussianElimination(simpleMatrix);
 
         solver.rowMultiply(0, 2);
+        solver.rowMultiply(1, 1);
+        solver.rowMultiply(2, -1);
 
-        assertEquals("1.0 1.5 1.0 -1.5 \n1.0 1.0 1.0 0.0 \n-1.0 2.0 -3.0 -1.0 \n", solver.printMatrix(), "Printout of matrix");
+        assertEquals("1.0 1.5 1.0 -1.5 \n1.0 1.0 1.0 0.0 \n1.0 -2.0 3.0 1.0 \n", solver.printMatrix(), "Printout of matrix");
+    }
+
+    /*
+     * Find unique solutions for matrix
+     */
+    @Test
+    void findSols() {
+        GaussianElimination solver = new GaussianElimination(simpleMatrix);
+
+        solver.solve();
+
+        assertEquals("7 -3 -4", solver.printMatrix(), "Vector b that contains unique solutions");
     }
 }
