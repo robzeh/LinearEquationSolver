@@ -31,7 +31,7 @@ class GaussianEliminationTest {
     void multiplyByScalar() {
         GaussianElimination solver = new GaussianElimination(simpleMatrix);
 
-        solver.multiply(2);
+        solver.rowMultiply(0, 2);
 
         assertEquals("1.0 1.5 1.0 -1.5 \n1.0 1.0 1.0 0.0 \n-1.0 2.0 -3.0 -1.0 \n", solver.printMatrix(), "Printout of matrix");
     }
