@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class GaussianElimination {
 
     private double[][] A; // Augmented matrix
@@ -113,10 +115,41 @@ public class GaussianElimination {
 
     }
 
+    /*
+     * Client to test input from command line
+     * 3 3
+     * 2 3 2 -3
+     * 1 1 1 0
+     * -1 2 -3 -1
+     */
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+
+        int rows = scan.nextInt();
+        int cols = scan.nextInt();
+
+        double[][] a = new double[rows][cols];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                a[i][j] = scan.nextDouble();
+            }
+        }
 
 
+        GaussianElimination solver = new GaussianElimination(a);
+
+        double[] x = solver.solve();
+
+        System.out.println("Solutions are: ");
+        for (double d : x) {
+            System.out.println(d);
+        }
 
 
-
+    }
 
 }
+
+
