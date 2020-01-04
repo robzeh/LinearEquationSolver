@@ -6,7 +6,8 @@ well as basic operations in Linear Algebra.
 
 Currently, program is only able to perform Gaussian elimination on square matrices. 
 
-#Demo 
+Demo
+
 ![Demo](https://media.giphy.com/media/U1mYevDByyGhZ6m02f/giphy.gif)
 
 TO DO
